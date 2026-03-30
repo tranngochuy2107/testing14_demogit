@@ -86,7 +86,7 @@ public class Buoi_2 {
 //                break;
 //
 //        }
-        switch (soC){
+        switch (soC) {
             case 1:
                 System.out.println("Số C là 1");
                 break;
@@ -102,12 +102,39 @@ public class Buoi_2 {
         // vòng lặp : vòng lặp while
         //cú pháp: while (điều kiện đúng) {thực hiện logic}
         // miễn là điều kiện đúng thì vòng lặp sẽ tiếp tục thực hiện logic
-
+//      while (true) {
+//        System.out.println("Vòng lặp while đang chạy ...");
+//    }
         int soD = 2;
         while (soD <= 10){
             System.out.println("SoD: " + soD);
             soD += 2; // 4,6, ......12
         }
+
+        int soE = 1;
+        while (soE <=5){
+            System.out.println("soE: " + soE);
+            soE += 1; // soE++ -> ++ tăng lên 1 đơn vị, -- giảm đi 1 đơn vị -> hậu tố
+        }
+
+        // vòng lặp do.. while
+        // cú pháp: do{ thực hiện logic} while ( điều kiện đúng);
+        // logic sẽ được thực hiện ít nhất 1 lần dù điện kiện có đúng hay không
+
+        int soF = 1;
+        do {
+            System.out.println("số F: " + soF);
+            soF++;
+        }while (soF <= 3); // điều kiện bên trong = false -> vòng lặp sẽ dừng
+
+        // vòng lặp for (*)
+        // cú pháp: for ( giá trị khởi tạo ; điều kiện đúng; giá trị thay đổi) { thực hiện logic }
+        // lưu ý : dùng khi biết được số lần lặp lại cụ thể
+
+        for(int i = 1; i < 5; i++){
+            System.out.println("i: " + i);
+        }
     }
 }
+
 

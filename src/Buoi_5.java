@@ -1,0 +1,142 @@
+public class Buoi_5 {
+    public static void main(String[] args) {
+    // 4 tính chất của oop: tính đóng gói, tính kế thừa, tính đa hình, tính trừu tượng
+
+        //tính đóng gói
+        student st1 = new student("Ngọc Huy",22,"CNTT");
+        String name = st1.getName();
+        System.out.println("Họ tên: " + name);
+
+
+        //tính kế thừa
+        giamDoc gd1 = new giamDoc("huy",21,"CNTT", "giám đốc");
+        gd1.thongTinNhanVien();
+
+    }
+}
+
+// ===================== Tính đóng gói : chỉ cho phép truy cập các thuộc tính của đối tượng thông qua phương thức.=======================
+class student{
+    // thuộc tính
+    private String name;
+    private int age;
+    private  String lop;
+
+    //constructor
+    public student(String name, int age, String lop){
+        this.name = name;
+        this.age = age;
+        this.lop = lop;
+    }
+
+    //tạo ra phương thức để truy cập vào thuộc tính
+    public String getName(){
+        return name;
+    }
+    public int getAge(){
+        return age;
+    }
+    public String getLop(){
+        return lop;
+    }
+    //============================== có 3 cách để gắn giá trị cho thuộc tính ===================================
+    //1. gán trực tiếp vào trong class ( không sử dụng)
+    //2. gán trực tiếp khi đối tượng ( sử dụng constructor) -> phổ biến nhất
+    //3. gán thông qua phương thức setter (sử dụng phương thức có giá trị trả về)
+//    public void setName(String name){
+//        this.name = name;
+//    }
+}
+
+//====================== Tính kế thừa: cho phép tạo lớp mới từ lớp đã tồn tại và kế thừa toàn bộ thuộc tính và phương thức của lớp cha, có thể thêm các
+//=========================== thuộc tính và phương thức mới
+class nhanVien {
+    //thuộc tính
+        public String name;
+        private int age;
+        private String phongBan;
+
+    //constructor
+    public nhanVien(String name, int age, String phongBan) {
+        this.name = name;
+        this.age = age;
+        this.phongBan = phongBan;
+
+    }
+    //Phương thức
+    public void thongTinNhanVien(){
+        System.out.println("Đây là nhân viên");
+    }
+}
+
+class giamDoc extends nhanVien {
+    // thuộc tính
+    private String chucVu;
+
+    //constructor
+    public giamDoc(String name, int age, String phongBan, String chucVu) {
+        //super : dùng để gọi lại constructor của lớp cha, phải được đặt ở dòng đầu tiên của constructor lớp con
+        super(name, age, phongBan);
+
+        this.chucVu = chucVu;
+
+    } // gọi constructor của lớp cha để khời tạo
+
+//    //Phương thức
+//    public void thongTinGiamDoc(){
+//        System.out.println("Đây là giám đốc");
+//    }
+
+    //sử dụng lại phương thức của lớp cha và ghi đè lên phương thức
+    @Override
+    public void thongTinNhanVien(){
+        System.out.println("Đây là giám đốc");
+    }
+
+}
+
+//====================== tính đa hình: một hành động/ phương thức có nhiều cách thực hiện khác nhau sử dụng @Override để ghi đè
+//====================== tính trừu tượng: chỉ cần khai báo các phương thức mà không cần triển khai chi tiết
+// tính diện tích của 1 hình trong hình học
+abstract class hinhHoc {
+    //thuộc tính
+    public String tenHinh;
+    public int canhA;
+    public int canhB;
+
+    //constructor
+    public hinhHoc(String tenHinh, int chieuDai, int chieuRong) {
+        this.tenHinh = tenHinh;
+        this.canhA = chieuDai;
+        this.canhB = chieuRong;
+    }
+
+    //Phương thức
+    abstract public int tinhDienTich(); // phương thức trừu tượng
+    }
+
+class hinhChuNhat extends hinhHoc{
+    //constructor
+    public hinhChuNhat(String tenHinh, int canhA, int canhB){
+        super(tenHinh, canhA, canhB);
+    }
+    //triển khai phương thức trừu tượng
+    @Override
+    public int tinhDienTich(){
+        return canhA * canhB;
+    }
+
+}
+class hinhVuong extends hinhHoc {
+    //constructor
+    public hinhVuong(String tenHinh, int canhA, int canhB) {
+        super(tenHinh, canhA, canhB);
+    }
+
+    //triển khai phương thức trừu tượng
+    @Override
+    public int tinhDienTich() {
+        return canhA * canhB;
+    }
+}
+
